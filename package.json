@@ -1,0 +1,36 @@
+{
+  "name": "data-analyzer-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.294.0",
+    "next": "14.0.3",
+    "plotly.js": "^3.0.1",
+    "plotly.js-dist-min": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-markdown": "^9.0.1",
+    "recharts": "^2.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.3.2"
+  }
+}
