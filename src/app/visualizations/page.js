@@ -26,7 +26,7 @@ export default function Visualizations() {
   const { data: plots, isLoading, error } = useQuery({
     queryKey: ['visualizations'],
     queryFn: async () => {
-      const response = await fetch('http://localhost:8000/visualize-data')
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/visualize-data`)
       console.log(`response : ${response}`)
       if (!response.ok) {
         throw new Error('Failed to fetch visualizations')

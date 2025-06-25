@@ -18,16 +18,24 @@ export default function Home() {
     setUploadError(null)
 
     try {
+      console.log('Uploading file...')
       const formData = new FormData()
+     
       formData.append('file', file)
-
-      const response = await fetch('http://localhost:8000/upload-data', {
+      console.log(formData)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload-data`, {
         method: 'POST',
         body: formData,
+        // Don't set Content-Type header - let the browser set it with the boundary
+        headers: {
+          'Accept': 'application/json',
+        },
       })
 
       if (!response.ok) {
-        throw new Error('Upload failed')
+        const errorData = await response.json().catch(() => null)
+        console.error('Upload failed:', errorData || response.statusText)
+        throw new Error(errorData?.message || 'Upload failed')
       }
 
       // Store file in localStorage for other pages
@@ -36,7 +44,8 @@ export default function Home() {
       // Redirect to summary page
       window.location.href = '/summary'
     } catch (error) {
-      setUploadError('Failed to upload file. Please try again.')
+      console.error('Upload error:', error)
+      setUploadError(error.message || 'Failed to upload file. Please try again.')
     } finally {
       setIsUploading(false)
     }

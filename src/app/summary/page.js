@@ -21,7 +21,9 @@ export default function Summary() {
   const { data: summary, isLoading, error } = useQuery({
     queryKey: ['summary'],
     queryFn: async () => {
-      const response = await fetch('http://localhost:8000/generate-summary')
+      console.log(currentFile)
+      console.log("Inside summary page query")
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/generate-summary`)
       if (!response.ok) {
         throw new Error('Failed to generate summary')
       }
